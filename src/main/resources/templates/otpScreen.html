@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base :: parent(~{::#content},~{::title},~{::script})}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th-data-replace="${title}">SignUp Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Replace with your own Tailwind CSS link or use a build process -->
+    <style>
+        /* Custom styles can be added here if needed */
+    </style>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 flex items-center justify-center h-screen">
+
+<div id="content">
+    
+    <div id="authentication-modal" tabindex="-1"
+    class="grid grid-cols-12 mt-3">
+
+    <div class="col-span-4 md:col-span-2 lg:col-span-3 xl:col-span-4"></div>
+
+        <div class="col-span-12 md:col-span-8 lg:col-span-6 xl:col-span-4">
+
+          
+
+
+            <div class="relative block p-6 border-t-[10px] border-sky-600 bg-white rounded-xl shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-sky-700 dark:hover:bg-gray-700">
+               
+               
+                <a type="button" data-th-href="@{/home}"
+                        class="absolute top-3 right-2.5 text-gray-400  dark:text-white  bg-transparent hover:bg-gray-200 dark:hover:bg-white   hover:text-gray-900  dark:hover:text-white  rounded-lg text-sm p-1.5 ml-auto inline-flex items-center popup-close"><svg
+                            aria-hidden="true" class="w-5 h-5" fill="#c6c7c7" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                              cliprule="evenodd"></path>
+                    </svg>
+                    <span class="sr-only">Close popup</span>
+                </a>
+                <div class="text-red-600 text-center"  th:if="${param.error}">Invalid username and password.</div>
+                <div class="text-green-600 text-center"  th:if="${param.logout}">You have been logged out.</div>
+    
+                <div class="p-5">
+                    <h3 class="text-2xl mb-0.5 font-medium"></h3>
+                    <p class="mb-4 text-sm font-normal text-gray-800 dark:text-gray-200"></p>
+
+                  
+
+                    <div class=" text-center p-4 mb-4 text-sm text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400" role="alert">
+                        
+                    We have sent otp to your email
+                    </div>
+
+
+
+
+
+
+                    <form class="w-full"  data-th-action="@{/login/otpVerification}" method="post" 
+                    data-th-object="${otpValue}">
+
+                          
+                        
+
+    <label for="number-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select a number:</label>
+    <input type="number"  data-th-field="*{otp}" name="otp" id="number-input" aria-describedby="helper-text-explanation" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="90210" required />
+
+                       
+                      
+                      
+                      
+                      
+                      
+                      
+                        <div class="mb-3 mt-4 flex  justify-center space-x-3">
+    
+                            <button type="submit"  class="px-3 py-2 rounded bg-gray-800 hover:bg-gray  text-white dark:bg-blue-800 dark:hover:bg-blue-800" >Verify</button>
+                        
+                            
+                        </div>
+                    </form>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    console.log("SignUp Page");
+</script>
+
+</body>
+</html>
